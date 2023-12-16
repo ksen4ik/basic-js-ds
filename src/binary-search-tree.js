@@ -41,7 +41,14 @@ class BinarySearchTree {
   }
 
   find(data) {
-    
+    return hasSub(this.root, data);
+
+    function hasSub(node, data) {
+      if(!node) return null;
+      if(node.data == data) return node;
+
+      return data > node.data ? hasSub(node.right, data) : hasSub(node.left, data);
+    }
   }
 
   remove(data) {
