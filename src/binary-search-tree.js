@@ -8,15 +8,15 @@ const { Node } = require('../extensions/list-tree.js');
 */
 class BinarySearchTree {
   constructor() {
-    this.root = null;
+    this.rootNode = null;
   }
 
   root() {
-    return this.root;
+    return this.rootNode;
   }
 
   add(data) {
-    this.root = addSub(this.root, data);
+    this.rootNode = addSub(this.rootNode, data);
     function addSub(node, data) {
       if(!node) return new Node(data);
       if(node.data == data) return node;
@@ -30,7 +30,7 @@ class BinarySearchTree {
   }
 
   has(data) {
-    return hasSub(this.root, data);
+    return hasSub(this.rootNode, data);
 
     function hasSub(node, data) {
       if(!node) return false;
@@ -41,7 +41,7 @@ class BinarySearchTree {
   }
 
   find(data) {
-    return hasSub(this.root, data);
+    return hasSub(this.rootNode, data);
 
     function hasSub(node, data) {
       if(!node) return null;
@@ -52,7 +52,7 @@ class BinarySearchTree {
   }
 
   remove(data) {
-    this.root = removeSub(this.root, data);
+    this.rootNode = removeSub(this.rootNode, data);
 
     function removeSub(node, data) {
       if(!node) return null;
@@ -86,25 +86,19 @@ class BinarySearchTree {
   }
 
   min() {
-    if(!this.root) return;
+    if(!this.rootNode) return;
 
-    let node = this.root;
-
-    while(node.left) {
-      node = node.left;
-    }
+    let node = this.rootNode;
+    while(node.left) node = node.left;
 
     return node.data;
   }
 
   max() {
-    if(!this.root) return;
+    if(!this.rootNode) return;
 
-    let node = this.root;
-
-    while(node.right) {
-      node = node.right;
-    }
+    let node = this.rootNode;
+    while(node.right) node = node.right;
 
     return node.data;
   }
